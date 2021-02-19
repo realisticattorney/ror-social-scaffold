@@ -2,10 +2,10 @@ class User < ApplicationRecord
    
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  # devise :database_authenticatable, :registerable,
+  #        :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, length: { maximum: 20 }
+  # validates :name, presence: true, length: { maximum: 20 }
 
   has_many :posts
   has_many :comments, dependent: :destroy
@@ -13,12 +13,12 @@ class User < ApplicationRecord
 
   has_many :friends 
 
-  def list(u)
-    @list = []
-    u.friends.each do |f|
+  def list
+    list = []
+    friends.each do |f|
      list << f.friend.name
     end
-     @list
+    list
   end
 
   def reverse_friends(u)
