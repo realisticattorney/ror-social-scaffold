@@ -1,0 +1,6 @@
+<ul>
+ <h3> Your Friend's requests <h3>
+    <% @user.pending_list.each do |watining_friends|%>
+    <li> <p> <%= link_to  watining_friends.name , user_path(watining_friends.id)%> </p> </li>
+    <% end %>
+</ul>
