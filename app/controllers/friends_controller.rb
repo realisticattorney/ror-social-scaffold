@@ -25,16 +25,14 @@ class FriendsController < ApplicationController
   # POST /friends.json
   def create
     @friend = Friend.new(friend_params)
-    # @friend_id = @friend.friend_id 
      if @friend.save 
-     Friend.create!(user_id:@friend.friend_id , friend_id: current_user.id)
-     redirect_to user_path(current_user)
+     redirect_to users_path
      flash[:notice] =
-        "You Sent Friend request to #{@friend.friend.name}"
+        "You Sent Friend request to #{@friend.user.name}"
     else
       redirect_to users_path
       flash[:notice] =
-        "You already Added #{@friend.friend.name} to your list"
+        "You already Added #{@friend.user.name} to your list"
     end
    
   end
@@ -46,8 +44,8 @@ class FriendsController < ApplicationController
   def update
     @friend_one = Friend.where(user_id:current_user.id , friend_id: @friend.friend_id)
     @friend_one.update(status: true)
-    @friend_reverse = Friend.where(user_id:@friend.friend_id , friend_id: current_user.id)
-    @friend_reverse.update(status: true)
+    Friend.create!(user_id: @friend.friend_id  , friend_id: current_user.id  , status: true)
+    redirect_to user_path(current_user)
         flash[:notice] =
         "You and #{@friend.friend.name} are now Friends ! "
   end
