@@ -2,7 +2,8 @@
 <% if @user == current_user%>
 <h3> Your Friend's Waiting List </h3>
     <% @user.pending_list.each do |watining_friends|%>
-    <li> <p> <%= link_to  watining_friends.name , user_path(watining_friends.id)%> </p></li>
+    <li> <p> <%= link_to  watining_friends.friend.name , user_path(watining_friends.friend.id)%> </p></li>
+    <li> <p> <%= link_to  'Accept' , friend_path(watining_friends.id) , method: :put %> </p></li>
     </li>
     <% end %>
     <% end %>

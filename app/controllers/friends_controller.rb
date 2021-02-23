@@ -44,12 +44,12 @@ class FriendsController < ApplicationController
   # PATCH/PUT /friends/1
   # PATCH/PUT /friends/1.json
   def update
-    # @friend_one = Friend.where(user_id:current_user.id , friend_id: @friend.friend_id)
-    # @friend_one.update(status: true)
-    # @friend_reverse = Friend.where(user_id:@friend.friend_id , friend_id: current_user.id)
-    # @friend_reverse.update(status: true)
-    #     flash[:notice] =
-    #     "You and #{@friend.friend.name} are now Friends ! "
+    @friend_one = Friend.where(user_id:current_user.id , friend_id: @friend.friend_id)
+    @friend_one.update(status: true)
+    @friend_reverse = Friend.where(user_id:@friend.friend_id , friend_id: current_user.id)
+    @friend_reverse.update(status: true)
+        flash[:notice] =
+        "You and #{@friend.friend.name} are now Friends ! "
   end
 
   # DELETE /friends/1
