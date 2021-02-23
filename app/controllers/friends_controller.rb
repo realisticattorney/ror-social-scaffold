@@ -24,18 +24,17 @@ class FriendsController < ApplicationController
   # POST /friends
   # POST /friends.json
   def create
+    # user.friends.create(friend_id: user_friend.id)
+    # user_friend.friends.create(friend_id: user.id)
     @friend = Friend.new(friend_params)
-
-    respond_to do |format|
       if @friend.save
-        format.html { redirect_to @friend, notice: 'Friend was successfully created.' }
-        format.json { render :show, status: :created, location: @friend }
-      else
-        format.html { render :new }
-        format.json { render json: @friend.errors, status: :unprocessable_entity }
-      end
+   
+     redirect_to user_path(current_user)
+  
     end
   end
+
+  
 
   # PATCH/PUT /friends/1
   # PATCH/PUT /friends/1.json

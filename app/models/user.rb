@@ -13,7 +13,9 @@ class User < ApplicationRecord
 
   has_many :friends 
 
-  def add_friends(user_friend , user)
+
+
+  def add_friends(user , user_friend)
     user.friends.create(friend_id: user_friend.id)
     user_friend.friends.create(friend_id: user.id)
   end
@@ -49,9 +51,15 @@ class User < ApplicationRecord
   end
 
 
-  def is_friend(user)
+  def is_friend?(user)
+    if @friends_list.nil?
+      return false
+    elsif
     @friends_list.include?(user)
-
+    return true
+    else
+      false
+    end
   end
 
  
