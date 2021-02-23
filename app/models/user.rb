@@ -29,6 +29,16 @@ class User < ApplicationRecord
      pending_list
   end
 
+  def pending_list_show
+    pending_list_show = []
+    friends.each do |f|
+      if f.status == nil 
+      pending_list_show << f.friend
+     end
+    end
+     pending_list_show
+  end 
+
   def friends_list
     @friends_list = []
     friends.each do |f|
