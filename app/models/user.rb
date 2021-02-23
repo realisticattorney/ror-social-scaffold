@@ -13,10 +13,7 @@ class User < ApplicationRecord
 
   has_many :friends 
 
-
-
-  def add_friends(user , user_friend)
-    user.friends.create(friend_id: user_friend.id)
+  def reverse_add_friends(user , user_friend)
     user_friend.friends.create(friend_id: user.id)
   end
 

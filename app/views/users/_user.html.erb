@@ -10,9 +10,10 @@
   <%= f.hidden_field :user_id%>
   <%= f.hidden_field :friend_id , value: user.id%>
   <%= f.submit "Add" %>
+  <%= create_class.reverse_add_friends(current_user , user).inspect %>
 
-  <%#= create_class.add_friends(current_user , user).inspect%>
   <% end %>
+
   
 
 </ul>

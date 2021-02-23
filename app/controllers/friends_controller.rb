@@ -24,13 +24,12 @@ class FriendsController < ApplicationController
   # POST /friends
   # POST /friends.json
   def create
-    # user.friends.create(friend_id: user_friend.id)
-    # user_friend.friends.create(friend_id: user.id)
     @friend = Friend.new(friend_params)
-      if @friend.save
-   
+     if @friend.save
      redirect_to user_path(current_user)
-  
+    else
+      flash[:notice] =
+        'Yup'
     end
   end
 
