@@ -7,7 +7,7 @@
 
   
   <% if user != current_user %>
-  <% if !current_user.pending_list.include?(user) %>
+  <% if !current_user.pending_list.include?(user) && !current_user.friends_list.include?(user) %>
   <%= form_for current_user.friends.build do |f| %>
   <%= f.hidden_field :user_id%>
   <%= f.hidden_field :friend_id , value: user.id%>

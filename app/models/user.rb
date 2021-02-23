@@ -17,9 +17,7 @@ class User < ApplicationRecord
   #   user_friend.friends.create(friend_id: user.id)
   # end
 
-  def accept_request(user_friend)
-    friends.where(friend_id: user_friend.id).update(status: true).save
-  end
+ 
 
   def pending_list
     pending_list = []
@@ -39,6 +37,11 @@ class User < ApplicationRecord
       end
     end
     @friends_list
+  end
+
+  def accept_request(user , user_friend)
+    user.friends.where(friend_id: user_friend.id).update!(status: true)
+    user_friend.friends.where(friend_id: user.id).update!(status: true)
   end
 
   def reverse_friends(u)

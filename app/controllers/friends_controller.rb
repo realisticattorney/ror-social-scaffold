@@ -24,12 +24,13 @@ class FriendsController < ApplicationController
   # POST /friends
   # POST /friends.json
   def create
-    create_class = User.new
     @friend = Friend.new(friend_params)
     # @friend_id = @friend.friend_id 
      if @friend.save 
      Friend.create!(user_id:@friend.friend_id , friend_id: current_user.id)
      redirect_to user_path(current_user)
+     flash[:notice] =
+        "You Sent Friend request to #{@friend.friend.name}"
     else
       redirect_to users_path
       flash[:notice] =
@@ -43,15 +44,12 @@ class FriendsController < ApplicationController
   # PATCH/PUT /friends/1
   # PATCH/PUT /friends/1.json
   def update
-    respond_to do |format|
-      if @friend.update(friend_params)
-        format.html { redirect_to @friend, notice: 'Friend was successfully updated.' }
-        format.json { render :show, status: :ok, location: @friend }
-      else
-        format.html { render :edit }
-        format.json { render json: @friend.errors, status: :unprocessable_entity }
-      end
-    end
+    # @friend_one = Friend.where(user_id:current_user.id , friend_id: @friend.friend_id)
+    # @friend_one.update(status: true)
+    # @friend_reverse = Friend.where(user_id:@friend.friend_id , friend_id: current_user.id)
+    # @friend_reverse.update(status: true)
+    #     flash[:notice] =
+    #     "You and #{@friend.friend.name} are now Friends ! "
   end
 
   # DELETE /friends/1

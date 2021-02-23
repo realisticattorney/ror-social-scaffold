@@ -15,8 +15,8 @@
   <tbody>
     <% @friends.each do |friend| %>
       <tr>
-        <td><%= friend.user %></td>
-        <td><%= friend.friend_id %></td>
+        <td><%= friend.user.name %></td>
+        <td><%= friend.friend.name %></td>
         <td><%= friend.status %></td>
         <td><%= link_to 'Show', friend %></td>
         <td><%= link_to 'Edit', edit_friend_path(friend) %></td>
