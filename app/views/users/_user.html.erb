@@ -5,13 +5,17 @@
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %> </li>
   </span> 
 
-  <%# create_class = User.new%>
+  
   <% if user != current_user %>
+  <% if !current_user.pending_list.include?(user) %>
   <%= form_for current_user.friends.build do |f| %>
   <%= f.hidden_field :user_id%>
   <%= f.hidden_field :friend_id , value: user.id%>
   <%= f.submit "Add" %>
-  <%#= create_class.reverse_add_friends(current_user , user).inspect %>
+  <% end %>
+  <% else %>
+    <li> <p> You and <%= "#{user.name}"%> in the waiting list </p> </li>
+
   <% end %>
 <% end %>
   

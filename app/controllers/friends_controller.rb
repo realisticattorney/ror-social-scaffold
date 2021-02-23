@@ -31,8 +31,9 @@ class FriendsController < ApplicationController
      Friend.create!(user_id:@friend.friend_id , friend_id: current_user.id)
      redirect_to user_path(current_user)
     else
+      redirect_to users_path
       flash[:notice] =
-        'Yup'
+        "You already Added #{@friend.friend.name} to your list"
     end
    
   end

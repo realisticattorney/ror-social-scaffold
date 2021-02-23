@@ -13,9 +13,9 @@ class User < ApplicationRecord
 
   has_many :friends 
 
-  def reverse_add_friends(user , user_friend)
-    user_friend.friends.create(friend_id: user.id)
-  end
+  # def reverse_add_friends(user , user_friend)
+  #   user_friend.friends.create(friend_id: user.id)
+  # end
 
   def accept_request(user_friend)
     friends.where(friend_id: user_friend.id).update(status: true).save
