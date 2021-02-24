@@ -1,8 +1,8 @@
 RSpec.describe 'create new user', type: :feature do
-    before :each do
-        @user = User.create(name: 'ahmed', email: 'ahmed@mail.com', password: '123456')
-      end
-   scenario 'Create new user with valid user and valid inputs' do
+  before :each do
+    @user = User.create(name: 'ahmed', email: 'ahmed@mail.com', password: '123456')
+  end
+  scenario 'Create new user with valid user and valid inputs' do
     visit new_user_registration_path
     fill_in 'Name', with: 'gustavo'
     fill_in 'Email', with: 'gustavo@email.com'
@@ -28,8 +28,8 @@ RSpec.describe 'create new user', type: :feature do
     fill_in 'Password', with: @user.password
     click_on 'Log in'
     expect(page).to have_content('Signed in successfully.')
-  end 
-   it 'if email or password in wrong' do
+  end
+  it 'if email or password in wrong' do
     visit user_session_path
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: 'another password'
