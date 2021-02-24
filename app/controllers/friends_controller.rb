@@ -54,10 +54,9 @@ class FriendsController < ApplicationController
   # DELETE /friends/1.json
   def destroy
     @friend.destroy
-    respond_to do |format|
-      format.html { redirect_to friends_url, notice: 'Friend was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to user_path(current_user)
+    flash[:notice] =
+    "You Removed This Friend request"
   end
 
   private
