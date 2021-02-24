@@ -1,5 +1,5 @@
 class FriendsController < ApplicationController
-  before_action :set_friend, only: [:show, :edit, :update, :destroy]
+  before_action :set_friend, only: %i[show edit update destroy]
 
   # GET /friends
   # GET /friends.json
@@ -9,8 +9,7 @@ class FriendsController < ApplicationController
 
   # GET /friends/1
   # GET /friends/1.json
-  def show
-  end
+  def show; end
 
   # GET /friends/new
   def new
@@ -18,36 +17,29 @@ class FriendsController < ApplicationController
   end
 
   # GET /friends/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /friends
   # POST /friends.json
   def create
     @friend = Friend.new(friend_params)
-     if @friend.save 
-     redirect_to users_path
-     flash[:notice] =
-        "You Sent Friend request to #{@friend.user.name}"
-    else
-      redirect_to users_path
-      flash[:notice] =
-        "You already Added #{@friend.user.name} to your list"
-    end
-   
+    flash[:notice] = if @friend.save
+                       "You Sent Friend request to #{@friend.user.name}"
+                     else
+                       "You already Added #{@friend.user.name} to your list"
+                     end
+    redirect_to users_path
   end
-
-  
 
   # PATCH/PUT /friends/1
   # PATCH/PUT /friends/1.json
   def update
-    @friend_one = Friend.where(user_id:current_user.id , friend_id: @friend.friend_id)
+    @friend_one = Friend.where(user_id: current_user.id, friend_id: @friend.friend_id)
     @friend_one.update(status: true)
-    Friend.create!(user_id: @friend.friend_id  , friend_id: current_user.id  , status: true)
+    Friend.create!(user_id: @friend.friend_id, friend_id: current_user.id, status: true)
     redirect_to user_path(current_user)
-        flash[:notice] =
-        "You and #{@friend.friend.name} are now Friends ! "
+    flash[:notice] =
+      "You and #{@friend.friend.name} are now Friends ! "
   end
 
   # DELETE /friends/1
@@ -56,17 +48,18 @@ class FriendsController < ApplicationController
     @friend.destroy
     redirect_to user_path(current_user)
     flash[:notice] =
-    "You Removed This Friend request"
+      'You Removed This Friend request'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_friend
-      @friend = Friend.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def friend_params
-      params.require(:friend).permit(:user_id, :friend_id, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_friend
+    @friend = Friend.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def friend_params
+    params.require(:friend).permit(:user_id, :friend_id, :status)
+  end
 end
