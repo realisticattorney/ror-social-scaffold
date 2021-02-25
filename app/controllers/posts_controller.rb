@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
-
   def index
     @post = Post.new
     timeline_posts
@@ -21,15 +20,10 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    posts_friend = Post.where('user_id IN (?)', current_user.friends_list do |f| 
-      f.id
-      end )
+    posts_friend = Post.where('user_id IN (?)', current_user.friends_list(&:id))
     posts_user = Post.where('user_id IN (?)', current_user.id)
     @timeline_posts ||= posts_friend.or(posts_user).ordered_by_most_recent
   end
-
-  
-
 
   def post_params
     params.require(:post).permit(:content)

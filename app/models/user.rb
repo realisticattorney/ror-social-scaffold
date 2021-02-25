@@ -11,20 +11,18 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friends
-  has_many :inverted_friends, class_name: "Friend", foreign_key: "friend_id"
-
-
+  has_many :inverted_friends, class_name: 'Friend', foreign_key: 'friend_id'
 
   def pending_list
     pending_list = []
     friends.map do |friend|
-      pending_list << friend if friend.status == nil
+      pending_list << friend if friend.status.nil?
     end
-    pending_list 
+    pending_list
   end
 
   def pending_list_show
-    inverted_friends.map{|friend| friend.user if friend.status == nil}.compact
+    inverted_friends.map { |friend| friend.user if friend.status.nil? }.compact
   end
 
   def friends_list
@@ -34,5 +32,4 @@ class User < ApplicationRecord
     end
     @friends_list
   end
-
 end
