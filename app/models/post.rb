@@ -8,11 +8,5 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  def friends_posts
-    current_user.friends_list.each do |friend|
-      friend.posts.each do |post|
-        post
-      end
-    end
-   end
+  
 end
