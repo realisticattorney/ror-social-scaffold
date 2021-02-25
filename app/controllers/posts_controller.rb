@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
+
   def index
     @post = Post.new
     timeline_posts
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user) 
   end
 
   def post_params
