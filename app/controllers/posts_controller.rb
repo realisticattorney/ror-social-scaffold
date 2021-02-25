@@ -21,10 +21,11 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    posts = Post.where('user_id IN (?)', current_user.friends_list do |f| 
+    posts_friend = Post.where('user_id IN (?)', current_user.friends_list do |f| 
       f.id
       end )
-    @timeline_posts ||= posts.ordered_by_most_recent
+    posts_user = Post.where('user_id IN (?)', current_user.id)
+    @timeline_posts ||= posts_friend.or(posts_user).ordered_by_most_recent
   end
 
   
