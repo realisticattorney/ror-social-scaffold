@@ -11,25 +11,20 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friends
+  has_many :inverted_friends, class_name: "Friend", foreign_key: "friend_id"
 
-  # def reverse_add_friends(user , user_friend)
-  #   user_friend.friends.create(friend_id: user.id)
-  # end
+
 
   def pending_list
     pending_list = []
-    friends.each do |f|
-      pending_list << f if f.status.nil?
+    friends.map do |friend|
+      pending_list << friend if friend.status == nil
     end
-    pending_list
+    pending_list 
   end
 
   def pending_list_show
-    pending_list_show = []
-    friends.each do |f|
-      pending_list_show << f.friend if f.status.nil?
-    end
-    pending_list_show
+    inverted_friends.map{|friend| friend.user if friend.status == nil}.compact
   end
 
   def friends_list
@@ -40,24 +35,4 @@ class User < ApplicationRecord
     @friends_list
   end
 
-  def accept_request(user, user_friend)
-    user.friends.where(friend_id: user_friend.id).update!(status: true)
-    user_friend.friends.where(friend_id: user.id).update!(status: true)
-  end
-
-  # def reverse_friends(user)
-  #   user.friends.each do |f|
-  #     Friend.create(user_id: f.friend_id, friend_id: u.id, status: true)
-  #   end
-  # end
-
-  # def friend?(user)
-  #   if @friends_list.nil?
-  #     false
-  #   elsif @friends_list.include?(user)
-  #     true
-  #   else
-  #     false
-  #   end
-  # end
 end
