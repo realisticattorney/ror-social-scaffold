@@ -34,14 +34,6 @@ ActiveRecord::Schema.define(version: 2021_02_19_193245) do
     t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
-  create_table "friendships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "receiver_id"
-    t.boolean "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "likes", force: :cascade do |t|
     t.integer "post_id"
     t.integer "user_id"
