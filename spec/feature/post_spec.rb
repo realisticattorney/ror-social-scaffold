@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'create new post', type: :feature do
-  
   scenario 'Create post with information' do
     visit new_user_registration_path
     fill_in 'Name', with: 'gustavo'
