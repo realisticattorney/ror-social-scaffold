@@ -20,5 +20,35 @@ module UsersHelper
         end
         end
     end
+
+    def pending_friends()
+        list = "<ul>"
+             if @user == current_user
+                list += "<h3> Your Friend's Waiting List </h3>"
+                @user.pending_list.each do |watining_friends|
+                    list += "<li> <p> #{link_to  watining_friends.friend.name , user_path(watining_friends.friend.id)} </p></li>"
+                    list += "<li> <p> #{link_to  'Accept' , friend_path(watining_friends.id) , method: :put} </p> </li>"
+                    list += "<li> <p> #{link_to  'Reject' , friend_path(watining_friends.id) , method: :delete} </p> </li>"
+                end
+            end
+        list += "</ul>"
+        list.html_safe
+    end
+
+    def friends_list()
+        list = "<ul>"
+        if @user == current_user
+           list += "<h3> Your Friend</h3>"
+           @user.friends_list.each do |friend|
+               list += "<li> <p> #{link_to  friend.name , user_path(friend.id)} </p></li>"   
+           end
+       end
+   list += "</ul>"
+   list.html_safe
+    end
+
 end
+
+
+
     

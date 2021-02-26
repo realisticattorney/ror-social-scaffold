@@ -1,10 +1,2 @@
 <h2><%= "Name: #{@user.name}" %></h2>
-<% if @user != current_user %>
-  <% if (!current_user.pending_list_show.include?(@user) && !@user.pending_list_show.include?(current_user))&& !current_user.friends_list.include?(@user) %>
-    <%= form_for Friend.create do |f| %>
-       <%= f.hidden_field :user_id , value: @user.id %>
-       <%= f.hidden_field :friend_id , value: current_user.id%>
-       <li> <%= f.submit "Add" %> </li>
-    <% end %>
-  <% end %>
-<% end %>
+<%= create_friend(@user) %>
