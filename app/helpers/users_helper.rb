@@ -9,11 +9,13 @@ module UsersHelper
   end
 
   def create_friend(user)
+    return unless user != current_user
     return unless aivable_friend(user).nil?
 
     content_tag(:div, (button_to 'Add',
                                  friends_path(params: { friend: { user_id: user.id, friend_id: current_user.id } }),
                                  method: :post, class: 'button-add'), class: 'button-add')
+    # end
   end
 
   def pending_friends()
