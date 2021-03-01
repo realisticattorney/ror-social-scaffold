@@ -17,15 +17,14 @@ class PostsController < ApplicationController
     end
   end
 
-  
-  
   private
+
   def timeline_posts
-    list = current_user.confirmed_friends.map { |f| f.friend.id  if f.status == true}
+    list = current_user.confirmed_friends.map { |f| f.friend.id if f.status == true }
     list += [current_user.id]
-    @timeline_posts ||= Post.where('user_id IN (?)' , list).ordered_by_most_recent
+    @timeline_posts ||= Post.where('user_id IN (?)', list).ordered_by_most_recent
   end
-  
+
   def post_params
     params.require(:post).permit(:content)
   end
