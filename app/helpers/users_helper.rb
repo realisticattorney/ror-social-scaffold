@@ -5,7 +5,7 @@ module UsersHelper
   end
 
   def friends_posts(user)
-    render @posts if current_user.confirmed_friends.include?(user)
+    render @posts if current_user.friends_list.include?(user)
   end
 
   def create_friend(user)
