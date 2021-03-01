@@ -17,14 +17,18 @@ class PostsController < ApplicationController
     end
   end
 
+  
+  
   private
-
   def timeline_posts
-    posts_friend = Post.where('user_id IN (?)', current_user.friends_list(&:id))
-    posts_user = Post.where('user_id IN (?)', current_user.id)
-    @timeline_posts ||= posts_friend.or(posts_user).ordered_by_most_recent
+    # posts_friend = Post.where('user_id IN (?)', current_user.confirmed_friends(&:id))
+    # posts_user = Post.where('user_id IN (?)', current_user.id)
+    # @timeline_posts ||= posts_friend.or(posts_user).ordered_by_most_recent
+    list = current_user.confirmed_friends.map { |f| f.friend.id  if f.status == true}
+    list += [current_user.id]
+    @timeline_posts ||= Post.where('user_id IN (?)' , list).ordered_by_most_recent
   end
-
+  
   def post_params
     params.require(:post).permit(:content)
   end

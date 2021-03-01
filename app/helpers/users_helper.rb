@@ -5,7 +5,7 @@ module UsersHelper
   end
 
   def friends_posts(user)
-    render @posts if current_user.friends_list.include?(user)
+    render @posts if current_user.confirmed_friends.include?(user)
   end
 
   def create_friend(user)
@@ -22,7 +22,7 @@ module UsersHelper
     list = '<ul>'
     if @user == current_user
       list += "<h3> Your Friend's Waiting List </h3>"
-      @user.pending_list.each do |watining_friends|
+      @user.pending_friendships.each do |watining_friends|
         list += "<li> <p> #{link_to watining_friends.friend.name,
                                     user_path(watining_friends.friend.id)} </p></li>"
         list += "<li> <p> #{link_to 'Accept', friend_path(watining_friends.id), method: :put} </p> </li>"
@@ -38,11 +38,16 @@ module UsersHelper
     list = '<ul>'
     if @user == current_user
       list += '<h3> Your Friend</h3>'
-      @user.friends_list.each do |friend|
-        list += "<li> <p> #{link_to friend.name, user_path(friend.id)} </p></li>"
+      @user.confirmed_friends.each do |f|
+        list += "<li> <p> #{link_to f.friend.name, user_path(f.friend.id)} </p></li>"
       end
     end
     list += '</ul>'
     list.html_safe
   end
+
+  def user_posts
+    list = current_user.confirmed_friends.map { |f| f.friend.id  if f.status == true}
+    list += [current_user.id]
+    end
 end

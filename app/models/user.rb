@@ -11,6 +11,14 @@ class User < ApplicationRecord
   has_many :friends
   has_many :inverted_friends, class_name: 'Friend', foreign_key: 'friend_id'
 
+  # For confirmed friends:
+  has_many :confirmed_friends, -> { where status: true }, class_name: "Friend"
+  has_many :friends, through: :confirmed_friends
+
+  # Users who needs to confirm friendship
+  has_many :pending_friendships, -> { where status: nil }, class_name: "Friend", foreign_key: "user_id"
+  has_many :pending_friends, through: :pending_friendships, source: :friend
+
   def pending_list
     pending_list = []
     friends.map do |friend|
@@ -19,15 +27,17 @@ class User < ApplicationRecord
     pending_list
   end
 
-  def pending_list_show
-    inverted_friends.map { |friend| friend.user if friend.status.nil? }.compact
-  end
+  # def pending_list_show
+  #   inverted_friends.map { |friend| friend.user if friend.status.nil? }.compact
+  # end
 
-  def friends_list
-    @friends_list = []
-    friends.each do |f|
-      @friends_list << f.friend if f.status == true
-    end
-    @friends_list
-  end
+  # def friends_list
+  #   @friends_list = []
+  #   friends.each do |f|
+  #     @friends_list << f.friend if f.status == true
+  #   end
+  #   @friends_list
+  # end
+
+  
 end
