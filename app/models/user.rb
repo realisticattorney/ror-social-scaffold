@@ -27,9 +27,6 @@ class User < ApplicationRecord
     pending_list
   end
 
-  # def pending_list_show
-  #   inverted_friends.map { |friend| friend.user if friend.status.nil? }.compact
-  # end
 
   def friends_list
     @friends_list = []

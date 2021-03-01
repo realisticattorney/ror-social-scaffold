@@ -15,7 +15,7 @@ module UsersHelper
     content_tag(:div, (button_to 'Add',
                                  friends_path(params: { friend: { user_id: user.id, friend_id: current_user.id } }),
                                  method: :post, class: 'button-add'), class: 'button-add')
-    # end
+    
   end
 
   def pending_friends()
@@ -40,6 +40,7 @@ module UsersHelper
       list += '<h3> Your Friend</h3>'
       @user.confirmed_friends.each do |f|
         list += "<li> <p> #{link_to f.friend.name, user_path(f.friend.id)} </p></li>"
+        list += "<li> <p> #{link_to 'Unfriend', friend_path(f.id), method: :delete , data: { confirm: 'Are you sure you want to unfriend? :( ' }} </p> </li>"
       end
     end
     list += '</ul>'
