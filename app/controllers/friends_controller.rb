@@ -1,5 +1,6 @@
 class FriendsController < ApplicationController
   before_action :set_friend, only: %i[show edit update destroy]
+  before_action :delete_friend, only: %i[destroy]
 
   # GET /friends
   # GET /friends.json
@@ -46,9 +47,10 @@ class FriendsController < ApplicationController
   # DELETE /friends/1.json
   def destroy
     @friend.destroy
+    @delete_friend.each(&:destroy)
     redirect_to user_path(current_user)
     flash[:notice] =
-      'You Removed This Friend request'
+      'You Removed This Friend'
   end
 
   private
@@ -56,6 +58,10 @@ class FriendsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_friend
     @friend = Friend.find(params[:id])
+  end
+
+  def delete_friend
+    @delete_friend = Friend.where(user_id: @friend.friend_id, friend_id: current_user.id)
   end
 
   # Only allow a list of trusted parameters through.
