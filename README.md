@@ -16,12 +16,12 @@ You could send friends invitations (Add button) and see the pending friends list
 
 ## Built With
 
-- Ruby v2.7.0
+- Ruby v2.7.2
 - Ruby on Rails v5.2.4
 
 ## Live Demo
 
-TBA
+[Stay in touch](https://safe-citadel-65091.herokuapp.com/)
 
 
 ## Getting Started
@@ -77,13 +77,58 @@ Open `http://localhost:3000/` in your browser.
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
+
 ### Deployment
 
-TBA
+To deploy it, you can use Heroku. 
+1. First you will need a Heroku account and set-up for deployment.
+1.1. Go to the [heroku website](https://www.heroku.com/) and create an account using the same email address you used for GitHub and Git.
+1.2. Run this command 
+  ```
+  1 | curl https://cli-assets.heroku.com/install.sh | sh
+  ```
+1.3. Run this command
+  ```
+  1 | heroku keys:add
+  ```
+press y and then Enter, and now, type in the email address you used to create your Heroku account and press Enter. Then, type in the password for your Heroku account. Next, press y and Enter to allow Heroku to upload your public SSH key.
+1.4. The terminal may read Invalid credentials provided. Just press any key and the Heroku website will open in your browser. Log in with the information you created your account with, and the terminal will reappear and accept your public SSH key.
+
+2. Once you complete the first step.
+2.1. Run this command
+``` 
+1 | heroku create
+```
+2.2. Then run
+```
+1 | git remote
+```
+Check that you see heroku in the output.
+2.3. Push to heroku typing 
+```
+1 | git push heroku HEAD:master
+```
+2.4.
+And we need to migrate the database to 
+Run this command
+```
+1 | heroku run rails db:migrate
+```
+2.5. Enjoy this app
+```
+1 | heroku open
+```
+
 
 ## Authors
 
-TBA
+**Ahmed Amin** :man_technologist:
+- GitHub: [@AhmedAmin90](https://github.com/AhmedAmin90)
+- LinkedIn: [Ahmed Amin](https://www.linkedin.com/in/web-developer/)
+
+**Gustavo Sanmartin** :bird:
+- GitHub: [@gasb150](https://github.com/gasb150)
+- LinkedIn: [Gustavo Sanmartin](https://www.linkedin.com/in/gustavsanmartin/)
 
 ## 🤝 Contributing
 
@@ -97,9 +142,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+<li>Microverse</li>
 
 ## 📝 License
 
-TBA
+<p>This project is <a href="LICENSE">MIT</a> licensed.</p>
 
