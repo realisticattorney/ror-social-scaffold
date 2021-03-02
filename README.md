@@ -1,15 +1,15 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+For this project we create a Ruby on Rails social media app, you are able to create accounts and log in, guest users only can see, sign-in page. But if you are logged, you will have access to all users list, you can see the users profile with their user name and posts. You will be able to send users invitation, (Add button), and you can see the pending friends list, to acept or reject sended invitations to you. You can create your owm posts, coments then and like/dislike posts (yours or your friend posts), 
 
 ## Built With
 
-- Ruby v2.7.0
+- Ruby v2.7.2
 - Ruby on Rails v5.2.4
 
 ## Live Demo
 
-TBA
+[Stay in touch](https://safe-citadel-65091.herokuapp.com/)
 
 
 ## Getting Started
@@ -60,10 +60,8 @@ Open `http://localhost:3000/` in your browser.
 ### Run tests
 
 ```
-    rpsec --format documentation
+    rpsec
 ```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
 ### Deployment
 
