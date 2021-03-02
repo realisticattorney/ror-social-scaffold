@@ -1,8 +1,10 @@
 <ul>
 <li>
+  <%= user_gravatar(user) %>
   Name: <%= user.name %>
   <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %> </li>
+  <%= my_see_link (user) %>
+  </li>
   </span> 
      <%= create_friend(user) %>
 

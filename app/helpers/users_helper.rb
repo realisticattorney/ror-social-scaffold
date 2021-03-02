@@ -1,4 +1,20 @@
 module UsersHelper
+
+  def user_gravatar(user)
+    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+    gravatar_url = "http://secure.gravatar.com/avatar/#{gravatar_id}"
+    image_tag(gravatar_url, alt: user.name)
+  end
+
+  def my_see_link (user)
+    if user==current_user
+    link_to 'My Profile',  user_path(user), class: 'profile-link'
+  else
+    link_to 'See Profile',  user_path(user), class: 'profile-link'
+  end
+  
+end
+
   def aivable_friend(user)
     Friend.where('(user_id = ? and friend_id = ?) OR (user_id = ? and friend_id = ?)', current_user.id, user.id,
                  user.id, current_user.id).first
@@ -18,32 +34,51 @@ module UsersHelper
   end
 
   def pending_friends()
-    list = '<ul>'
+    list = "<h3> Waiting List </h3>"
     if @user == current_user
-      list += "<h3> Your Friend's Waiting List </h3>"
+      
+      list += '<ul>'
       @user.pending_friendships.each do |watining_friends|
+        list += user_gravatar(watining_friends.friend)
         list += "<li> <p> #{link_to watining_friends.friend.name,
                                     user_path(watining_friends.friend.id)} </p></li>"
-        list += "<li> <p> #{link_to 'Accept', friend_path(watining_friends.id), method: :put} </p> </li>"
-        list += "<li> <p> #{link_to 'Reject', friend_path(watining_friends.id),
+        list += "<li> <p> <i class='fas fa-user-check'></i> #{link_to 'Accept', friend_path(watining_friends.id), method: :put} </p> </li>"
+        list += "<li> <p> <i class='fas fa-user-times'></i> #{link_to 'Reject', friend_path(watining_friends.id),
                                     method: :delete} </p> </li>"
       end
+      list += '</ul>'
     end
-    list += '</ul>'
+   
     list.html_safe
   end
 
   def friends_list()
-    list = '<ul>'
-    if @user == current_user
-      list += '<h3> Your Friend</h3>'
+    list = '<h3> Your Friends</h3>'
+    
+      if @user == current_user
+     
+      list += '<ul>'
+      list += '<div class=friend-list>'
+      unless @user.confirmed_friends.nil?
+        
       @user.confirmed_friends.each do |f|
+        list+='<div>'
+        list += user_gravatar(f.friend)
+        
         list += "<li> <p> #{link_to f.friend.name, user_path(f.friend.id)} </p></li>"
         list += "<li> <p> #{link_to 'Unfriend', friend_path(f.id), method: :delete,
                                                                    data: { confirm: 'Are you sure? ' }} </p> </li>"
+
+                                                                   list+='</div>'
       end
+    
     end
+     
+    end
+    list += '</div>'
     list += '</ul>'
+     
+    
     list.html_safe
   end
 
