@@ -1,6 +1,4 @@
-# Scaffold for social media app with Ruby on Rails
-
-
+# Social media app with Ruby on Rails
 
 We create a Ruby on Rails social media app for this project; you can create accounts and log in, guest users only can see, sign-in and sing-up pages.
 <img src="./app/assets/images/sign_in.png">
