@@ -1,6 +1,18 @@
-# Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+# Social media app with Ruby on Rails
+
+We create a Ruby on Rails social media app for this project; you can create accounts and log in, guest users only can see, sign-in and sing-up pages.
+<img src="./app/assets/images/sign_in.png">
+<img src="./app/assets/images/Sign_up.png">
+
+ If you log in, you will access the list of all users and see each user profile with their posts. 
+
+You could send friends invitations (Add button) and see the pending friends list to accept or reject sent invitations to you. You can create your posts, comments then and like/dislike posts (yours or your friend posts), order by most recent, and counting the numbers of likes and comments.
+
+<img src= "./app/assets/images/Timeline.png">
+
+<img src="./app/assets/images/User_profile.png">
+
 
 ## Built With
 
