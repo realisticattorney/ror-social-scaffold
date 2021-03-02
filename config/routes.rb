@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :friends
   root 'posts#index'
 
   devise_for :users
