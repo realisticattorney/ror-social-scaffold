@@ -1,5 +1,6 @@
+# Scaffold for social media app with Ruby on Rails
 
-# Social media app with Ruby on Rails
+
 
 We create a Ruby on Rails social media app for this project; you can create accounts and log in, guest users only can see, sign-in and sing-up pages.
 <img src="./app/assets/images/sign_in.png">
@@ -12,7 +13,6 @@ You could send friends invitations (Add button) and see the pending friends list
 <img src= "./app/assets/images/Timeline.png">
 
 <img src="./app/assets/images/User_profile.png">
-
 
 ## Built With
 
@@ -39,14 +39,14 @@ Postgres: >=9.5
 Instal gems with:
 
 ```
-bundle install
+1 | bundle install
 ```
 
 Setup database with:
 
 ```
-   rails db:create
-   rails db:migrate
+   1 | rails db:create
+   2 | rails db:migrate
 ```
 
 ### Github Actions
@@ -64,7 +64,7 @@ To make sure the linters' checks using Github Actions work properly, you should 
 Start server with:
 
 ```
-    rails server
+    1 | rails server
 ```
 
 Open `http://localhost:3000/` in your browser.
@@ -72,11 +72,8 @@ Open `http://localhost:3000/` in your browser.
 ### Run tests
 
 ```
-    rpsec --format documentation
+    1 | rpsec
 ```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
 
 ### Deployment
 
@@ -120,7 +117,9 @@ Run this command
 ```
 
 
+
 ## Authors
+
 
 **Ahmed Amin** :man_technologist:
 - GitHub: [@AhmedAmin90](https://github.com/AhmedAmin90)
@@ -129,6 +128,7 @@ Run this command
 **Gustavo Sanmartin** :bird:
 - GitHub: [@gasb150](https://github.com/gasb150)
 - LinkedIn: [Gustavo Sanmartin](https://www.linkedin.com/in/gustavsanmartin/)
+
 
 ## 🤝 Contributing
 
@@ -143,6 +143,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 <li>Microverse</li>
+
 
 ## 📝 License
 

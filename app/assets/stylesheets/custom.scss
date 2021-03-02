@@ -155,6 +155,10 @@ form {
       padding: 8px;
       background-color: $primary-color-light;
     }
+
+    // input[type="checkbox"] {
+    //   width: fit-content;
+    // }
   }
 
   .actions {
@@ -274,13 +278,11 @@ form {
 .users-section {
   width: 100%;
   margin: 10px;
-
-  .users-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5%;
-  }
-
+   .users-list{
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 5%;
+   }
   .users-list li {
     margin-bottom: 16px;
     text-transform: capitalize;
@@ -294,6 +296,7 @@ form {
     margin: 0 0 8px 0;
     color: $primary-color-dark;
   }
+ 
 }
 
 .user-section {
@@ -304,6 +307,7 @@ form {
     text-transform: capitalize;
   }
 
+
   .timeline {
     width: 100%;
 
@@ -313,31 +317,26 @@ form {
 
     justify-content: start;
   }
-
-  .friendship {
+  .friendship{
     margin: 10% 0;
     display: flex;
     flex-direction: column;
-
-    .h2 {
-      text-align: center;
-    }
-
-    .user-friends-list {
-      display: grid;
-      grid-template-columns: 20fr 1fr;
-    }
-
-    .friend-list {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .waiting-list img {
-      width: 30px;
-      height: 30px;
-    }
+  .h2 {
+    text-align: center;
   }
+  .user-friends-list{
+    display: grid;
+    grid-template-columns: 20fr 1fr;
+  }
+  .friend-list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .waiting-list img{
+    width: 30px;
+    height: 30px;
+  }
+}
 }
 
 #error_explanation {
@@ -376,8 +375,7 @@ form {
     width: 50%;
   }
 }
-
-.button_to {
+.button_to{
   width: 100%;
 }
 
