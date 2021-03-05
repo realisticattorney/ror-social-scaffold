@@ -13,7 +13,8 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
-  def friends #friends es la lista de TODOS los que ya son amigos
+  # friends es la lista de TODOS los que ya son amigos
+  def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
     friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
     friends_array.compact
@@ -29,16 +30,17 @@ class User < ApplicationRecord
     inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
 
-  def friend?(user) #si la lista friends incluye al usuario es porque es amigo de alguien e.g User.first.friend?(User.find(2))
+  # si la lista friends incluye al usuario es porque es amigo de alguien e.g User.first.friend?(User.find(2))
+  def friend?(user)
     friends.include?(user)
   end
 
-  def pending?(user) #si la lista
+  # si la lista
+  def pending?(user)
     pending_friends.include?(user)
   end
 
   def requested?(user)
     friend_requests.include?(user)
   end
-  end
-
+end
