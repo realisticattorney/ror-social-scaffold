@@ -11,7 +11,7 @@ module FriendshipsHelper
     else
       unless current_user.id == other_user.id
         content_tag(:div,
-                    (button_to 'Invite to be friends',
+                    (button_to 'Add as friend',
                                friendships_path(params: { friendship: { friend_id: other_user.id, user_id: current_user.id } }),
                                method: :post, class: 'button-friendship'), class: 'button-friendship')
       end
