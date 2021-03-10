@@ -46,6 +46,3 @@ RSpec.describe 'Show comments', type: :feature do
     expect(page).to have_content('You need to sign in or sign up before continuing.')
   end
 end
-
-
-
