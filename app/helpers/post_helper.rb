@@ -10,4 +10,13 @@ module PostHelper
       content_tag(:div, (button_to 'Delete Post', post_path(post), method: :delete, class: 'btn btn-danger'))
   end
 end
+
+
+def del_btn(user, comment)
+  if user == current_user
+  content_tag(:div, (button_to 'Delete Comment', post_comment_path(comment.post_id, comment.id), method: :delete, class: 'btn btn-danger'))
+  end
+end
+
+
 end
