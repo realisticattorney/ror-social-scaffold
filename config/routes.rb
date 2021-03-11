@@ -9,11 +9,12 @@ Rails.application.routes.draw do
     member do
       post 'accept', to: 'friendships#confirm'
       post 'reject', to: 'friendships#reject'
+      post 'destroy', to: 'friendships#destroy'
     end
   end
 
   resources :users, only: [:index, :show]
-  resources :posts, only: [:index, :create] do
+  resources :posts, only: [:index, :create, :destroy] do
     resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]
   end

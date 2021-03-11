@@ -12,6 +12,8 @@
     <%= post.content %>
   </p>
 
+  <%= delete_post(post) %>
+  
   <div class='post-comments-section'>
     <%= render partial: 'comments/comment', collection: post.comments %>
 
