@@ -1,4 +1,5 @@
 # rubocop:disable Layout/LineLength
+# rubocop:disable Metrics/PerceivedComplexity
 module FriendshipsHelper
   def friendship_button(other_user)
     if current_user.friend?(other_user)
@@ -6,7 +7,7 @@ module FriendshipsHelper
                Friendship.where(user: current_user, friend: other_user).first
              else
                Friendship.where(user: other_user, friend: current_user).first
-      end
+             end
       content_tag(:div, (button_to 'Unfriend', friendship_path(path), method: :delete, class: 'btn btn-danger'))
 
     elsif current_user.pending?(other_user)
@@ -25,3 +26,4 @@ module FriendshipsHelper
   end
 end
 # rubocop:enable Layout/LineLength
+# rubocop:enable Metrics/PerceivedComplexity

@@ -23,7 +23,7 @@ class PostsController < ApplicationController
     redirect_to posts_path
     flash[:error] = 'Post was destroyed!'
   end
-  
+
   private
 
   def timeline_posts
