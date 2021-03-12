@@ -68,8 +68,8 @@ gem 'rolify'
 gem 'rubocop', '~> 0.81.0'
 gem 'simple_form', '~> 5.0'
 gem 'uglifier'
+gem 'pg'
 
 group :development, :test do
   gem 'sqlite3'
 end
-gem 'pg', group: :production
