@@ -14,8 +14,8 @@ RSpec.describe 'create new user', type: :feature do
     click_on 'Sign up'
 
     visit users_path
-    click_on 'Add'
-    expect(page).to have_content('Awaiting for response')
+    click_on 'Invite to be friends'
+    expect(page).to have_content('Pending Response')
   end
 
   scenario 'Accept friendship request' do
@@ -27,8 +27,8 @@ RSpec.describe 'create new user', type: :feature do
     click_on 'Sign up'
 
     visit users_path
-    click_on 'Add'
-    expect(page).to have_content('Awaiting for response')
+    click_on 'Invite to be friends'
+    expect(page).to have_content('Pending Response')
 
     click_on 'Sign out'
     visit user_session_path

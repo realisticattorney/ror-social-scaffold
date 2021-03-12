@@ -15,7 +15,7 @@ module FriendshipsHelper
                                friendships_path(params: { friendship: { friend_id: user.id, user_id: current_user.id } }),
                                method: :post, class: 'button-friendship'), class: 'button-friendship')
       elsif friendship.confirmed
-
+        'Already Friends'
       elsif friendship.user_id == user.id
         content_tag(:div, (button_to 'Accept Friendship', friendship_path(friendship.id), method: :put) +
                             (button_to 'Reject Friendship', friendship_path(friendship.id), method: :delete))
