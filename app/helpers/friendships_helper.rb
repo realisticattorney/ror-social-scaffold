@@ -1,4 +1,5 @@
-# rubocop:disable Lint/EmptyConditionalBody
+# rubocop:disable Layout/LineLength
+# rubocop:disable Style/GuardClause
 module FriendshipsHelper
   def verify_friendship(friend_id)
     Friendship.where('(user_id = ? and friend_id = ?) OR (user_id = ? and friend_id = ?)',
@@ -11,8 +12,8 @@ module FriendshipsHelper
       if friendship.nil?
         content_tag(:div,
                     (button_to 'Invite to be friends',
-                              friendships_path(params: { friendship: { friend_id: user.id, user_id: current_user.id } }),
-                              method: :post, class: 'button-friendship'), class: 'button-friendship')
+                               friendships_path(params: { friendship: { friend_id: user.id, user_id: current_user.id } }),
+                               method: :post, class: 'button-friendship'), class: 'button-friendship')
       elsif friendship.confirmed
 
       elsif friendship.user_id == user.id
@@ -24,4 +25,5 @@ module FriendshipsHelper
     end
   end
 end
-# rubocop:enable Lint/EmptyConditionalBody
+# rubocop:enable Layout/LineLength
+# rubocop:enable Style/GuardClause
