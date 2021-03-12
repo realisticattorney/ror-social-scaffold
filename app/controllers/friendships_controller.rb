@@ -17,26 +17,17 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  def confirm
-    friendship = Friendship.find(params[:id])
-    friendship.confirmed = true
-    friendship.save
-    redirect_to users_path
-  end
-
-  def reject
-    friendship = Friendship.find(params[:id])
-    friendship.confirmed = false
-    user = User.find(friendship.user_id)
-    friend = User.find(friendship.friend_id)
-    Friendship.where(user: user, friend: friend).first.delete
-    friendship.save
+  def update
+    @friendship = Friendship.find(params[:id])
+    @friendship.update_attribute(:confirmed, true)
+    @friendship_two = Friendship.new(user_id: @friendship.friend_id, friend_id: @friendship.user_id, confirmed: true)
+    @friendship_two.save
+    flash[:notice] = 'Friendship has been accepted'
     redirect_to users_path
   end
 
   def destroy
-    @friendship = Friendship.find(params[:id])
-    @friendship.destroy
+    Friendship.find(params[:id]).destroy
     redirect_to users_path
   end
 
