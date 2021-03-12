@@ -67,6 +67,7 @@ gem 'pundit'
 gem 'rolify'
 gem 'rubocop', '~> 0.81.0'
 gem 'simple_form', '~> 5.0'
+gem 'uglifier'
 
 group :development, :test do
   gem 'sqlite3'
