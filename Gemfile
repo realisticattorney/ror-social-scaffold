@@ -6,7 +6,7 @@ ruby '2.7.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -63,9 +63,12 @@ gem 'bootstrap_form', '~> 4.0'
 gem 'devise'
 gem 'gravatar_image_tag', '~> 1.2'
 gem 'jquery-rails'
-gem 'pg'
 gem 'pundit'
 gem 'rolify'
 gem 'rubocop', '~> 0.81.0'
 gem 'simple_form', '~> 5.0'
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+group :development, :test do
+  gem 'sqlite3'
+end
+gem 'pg', group: :production
