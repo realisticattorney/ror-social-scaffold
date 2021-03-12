@@ -1,19 +1,13 @@
 Rails.application.routes.draw do
-
-  resources :friendships
+  
   root 'posts#index'
+  
+  resources :friendships
   
   devise_for :users
   
-  resources :friendships do
-    member do
-      post 'accept', to: 'friendships#confirm'
-      post 'reject', to: 'friendships#reject'
-      post 'destroy', to: 'friendships#destroy'
-    end
-  end
-
   resources :users, only: [:index, :show]
+  
   resources :posts, only: [:index, :create, :destroy] do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
