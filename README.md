@@ -2,6 +2,10 @@
 
 > This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
 
+### Live Demo
+
+<a href="https://salty-ravine-74049.herokuapp.com/">Visit Page</a>
+
 ## Built With
 
 - Ruby v2.7.0
