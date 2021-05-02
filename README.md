@@ -70,7 +70,7 @@ Open `http://localhost:3000/` in your browser.
 
 - GitHub: [@realisticattorney](https://github.com/realisticattorney)
 - Twitter: [@ContoliAxl](https://www.twitter.com/contoliaxl)
-- Linkedin: [@germanaquila](https://www.linkedin.com/in/german-aquila-55a9171b5/)
+- Linkedin: [@germanaquila](https://www.linkedin.com/in/germanaquila/)
 
 ## 🤝 Contributing
 
